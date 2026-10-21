@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>EWC SRC Leadership Training</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+/* Layout concept: a dark theatre. The page is the stage, photos are lit like
+   performers, and the logo's four colours appear only as stage lights. */
+:root{
+  --ink:#0B0910; --ink-2:#14101C; --ink-3:#1D1828;
+  --line:rgba(240,234,255,.12); --line-2:rgba(240,234,255,.22);
+  --paper:#F3EFFA; --mute:#A59EB8; --dim:#6F6884;
+  --stage:#8E63FF; --gold:#FFD62E; --blue:#3A86E0; --red:#F0393A; --green:#2BBD6B;
+  --f-display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --f-serif:"Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --maxw:1320px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--f-display);font-size:17px;line-height:1.55;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+/* film grain over everything, very faint */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+@media (min-width:900px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+
+/* type */
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.h-xl{font-size:clamp(3.2rem,11vw,10.5rem);line-height:.88;letter-spacing:-.045em;font-weight:700;margin:0;text-wrap:balance}
+.h-l{font-size:clamp(2.3rem,6.2vw,5.6rem);line-height:.95;letter-spacing:-.035em;font-weight:650;margin:0;text-wrap:balance}
+.h-m{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.04;letter-spacing:-.025em;font-weight:600;margin:0;text-wrap:balance}
+.h-s{font-size:1.25rem;line-height:1.2;letter-spacing:-.01em;font-weight:600;margin:0}
+em,.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.h-l em,.h-xl em,.h-m em{color:var(--gold)}
+.lede{font-size:clamp(1.05rem,1.5vw,1.25rem);color:#D6D0E4;max-width:62ch;margin:0}
+.muted{color:var(--mute)}
+.mono{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em}
+.num{font-variant-numeric:tabular-nums}
+p{margin:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font:600 15px/1 var(--f-display);
+  text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+.btn-gold{background:linear-gradient(180deg,#FFE065,#FFC81F);color:#17120A;box-shadow:0 8px 30px -10px rgba(255,214,46,.6)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line-2);color:var(--paper);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--paper)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* nav */
+.nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);z-index:70;
+  display:flex;align-items:center;gap:6px;padding:7px 7px 7px 18px;border-radius:999px;
+  background:rgba(20,16,28,.72);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
+  border:1px solid var(--line);width:max-content;max-width:calc(100% - 24px)}
+.nav .logo img{height:20px;width:auto}
+.nav .logo{display:flex;align-items:center;margin-right:10px}
+.nav a.l{font-size:14px;text-decoration:none;color:var(--mute);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s;white-space:nowrap}
+.nav a.l:hover,.nav a.l.on{color:var(--paper);background:rgba(255,255,255,.06)}
+.nav .btn{padding:10px 16px;font-size:14px}
+@media (max-width:820px){.nav a.l{display:none}.nav a.l.keep{display:inline-block}}
+
+/* reveal: elements are readable at rest, motion only adds polish */
+.js .rv{transform:translateY(26px);opacity:.25;transition:transform 1s var(--ease),opacity 1s var(--ease)}
+.js .rv.in{transform:none;opacity:1}
+
+/* section scaffolding */
+section{position:relative}
+.sec{padding-block:clamp(80px,12vw,160px)}
+.sec-head{display:grid;gap:22px;margin-bottom:clamp(40px,6vw,72px)}
+.rule{height:1px;background:var(--line)}
+
+/* tags */
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;border:1px solid var(--line-2);color:#D6D0E4;white-space:nowrap}
+.tag.gold{border-color:rgba(255,214,46,.5);color:var(--gold)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding-block:56px 40px;color:var(--mute);font-size:14px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.foot h4{font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+.foot a{text-decoration:none;color:var(--paper)}
+.foot a:hover{color:var(--gold)}
+.foot .small{font-size:12.5px;color:var(--dim);margin-top:40px;max-width:80ch}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .rv{transform:none;opacity:1}
+}
+
+/* case-study pages */
+.chead{padding-block:calc(env(safe-area-inset-top,0px) + 130px) 60px;position:relative;overflow:hidden;isolation:isolate}
+.chead::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70vw;height:70vw;z-index:-1;background:radial-gradient(circle,rgba(142,99,255,.22),transparent 60%)}
+.back{display:inline-flex;gap:8px;align-items:center;color:var(--mute);text-decoration:none;font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:36px}
+.back:hover{color:var(--gold)}
+.chead h1{font-size:clamp(2.6rem,7.5vw,6.6rem);line-height:.92;letter-spacing:-.04em;font-weight:680;margin:20px 0 30px;max-width:16ch;text-wrap:balance}
+.chead h1 em{color:var(--gold)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid var(--line);margin-top:48px}
+.meta div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.meta span{font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.meta b{font-weight:550;font-size:15.5px}
+.figs-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-block:1px solid var(--line);background:var(--ink-2)}
+.figs-row div{padding:30px 20px;border-left:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.figs-row div:first-child{border-left:0}
+.figs-row b{font-size:clamp(2rem,3.6vw,3.2rem);line-height:.9;letter-spacing:-.04em;font-weight:650;font-variant-numeric:tabular-nums}
+.figs-row b.g{color:var(--gold)}
+.figs-row span{font-size:13.5px;color:var(--mute)}
+@media (max-width:1000px){.figs-row{grid-template-columns:repeat(3,minmax(0,1fr))}.figs-row div:nth-child(4){border-left:0}.figs-row div:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:560px){.figs-row{grid-template-columns:repeat(2,minmax(0,1fr))}.figs-row div{border-left:0;border-top:1px solid var(--line)}.figs-row div:nth-child(even){border-left:1px solid var(--line)}.figs-row div:nth-child(-n+2){border-top:0}}
+.blk{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(24px,5vw,80px);padding-block:clamp(60px,8vw,110px);border-bottom:1px solid var(--line)}
+@media (max-width:900px){.blk{grid-template-columns:1fr}}
+.blk .side{display:grid;gap:16px;align-content:start}
+@media (min-width:901px){.blk .side{position:sticky;top:100px;align-self:start}}
+.blk .main{display:grid;gap:24px;min-width:0}
+.blk .main p{color:#D6D0E4;max-width:64ch}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:#D6D0E4}
+.ticks li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:9px}
+.steps{display:grid;border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.step .d{font:500 12px/1.4 var(--f-mono);letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.step .d b{display:block;color:var(--gold);font-size:13px;margin-bottom:4px}
+.step h3{font-size:1.2rem;letter-spacing:-.01em;font-weight:600;margin:0 0 6px}
+.step p{font-size:15px;color:var(--mute)!important}
+@media (max-width:560px){.step{grid-template-columns:1fr;gap:6px}}
+.split{display:flex;width:100%;height:58px;border-radius:12px;overflow:hidden;gap:3px}
+.split div{display:flex;align-items:flex-end;padding:8px 10px;font:500 11px/1.2 var(--f-mono);letter-spacing:.04em;color:var(--ink)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:6px}
+.legend div{display:grid;gap:4px;font-size:14px;color:var(--mute)}
+.legend b{color:var(--paper);font-weight:600}
+.bars{display:grid;gap:16px}
+.bar{display:grid;grid-template-columns:120px minmax(0,1fr) 64px;gap:16px;align-items:center}
+.bar .lab{font:500 12px/1.3 var(--f-mono);color:var(--mute);letter-spacing:.04em}
+.bar .tr{height:14px;border-radius:14px;background:var(--ink-3);overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:14px;background:linear-gradient(90deg,#5A4A86,var(--stage));transform-origin:left;transform:scaleX(var(--v));transition:transform 1.4s var(--ease)}
+.js .bar .tr i{transform:scaleX(0)}
+.js .bar.in .tr i{transform:scaleX(var(--v))}
+.bar.top .tr i{background:linear-gradient(90deg,#C9A21C,var(--gold))}
+.bar .v{font-weight:650;font-size:1.25rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right}
+.bar .sub{grid-column:2/4;font-size:13px;color:var(--dim);margin-top:-10px}
+@media (max-width:560px){.bar{grid-template-columns:1fr 54px}.bar .lab{grid-column:1/-1}.bar .sub{grid-column:1/-1}}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tool{padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--ink-2);display:grid;gap:8px;align-content:start}
+.tool h4{margin:0;font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tool ul{margin:0;padding-left:16px;display:grid;gap:3px;font-size:14px;color:#D6D0E4}
+.recs{counter-reset:r;display:grid;gap:0;border-top:1px solid var(--line)}
+.recs li{list-style:none;counter-increment:r;display:grid;grid-template-columns:54px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);color:#D6D0E4}
+.recs li::before{content:counter(r,decimal-leading-zero);font:500 13px/1.6 var(--f-mono);color:var(--gold)}
+.recs{padding:0;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;padding-block:12px}
+.gallery figure{margin:0;border-radius:16px;overflow:hidden;position:relative;background:var(--ink-3)}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.g1{grid-column:span 7;aspect-ratio:4/3}.g2{grid-column:span 5;aspect-ratio:3/4;grid-row:span 2}.g3{grid-column:span 7;aspect-ratio:16/8}
+@media (max-width:760px){.g1,.g3{grid-column:span 12}.g2{grid-column:span 12;grid-row:auto;aspect-ratio:4/5}}
+.find{display:grid;gap:0;border-top:1px solid var(--line)}
+.find>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.find b{font-size:2.4rem;line-height:.9;letter-spacing:-.04em;font-weight:650;font-variant-numeric:tabular-nums}
+.find h3{font-size:1.15rem;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.find p{font-size:15px;color:var(--mute)!important}
+.find .meter{height:4px;border-radius:4px;background:var(--ink-3);margin-top:12px;overflow:hidden;max-width:420px}
+.find .meter i{display:block;height:100%;background:var(--gold);width:var(--v)}
+.flips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.flips figure{margin:0;border-radius:14px;overflow:hidden;background:#eee;transform:rotate(-1.2deg)}
+.flips figure:nth-child(2){transform:rotate(1.4deg)}
+.flips img{width:100%;height:auto}
+.quote{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.2;color:var(--paper);border-left:2px solid var(--gold);padding-left:22px;max-width:30ch}
+.endcta{padding-block:clamp(70px,10vw,140px);text-align:left;display:grid;gap:24px}
+.endcta .row2{display:flex;flex-wrap:wrap;gap:12px}
+.nextcase{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 0;border-top:1px solid var(--line);text-decoration:none}
+.nextcase b{font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;font-weight:600;transition:color .3s}
+.nextcase:hover b{color:var(--gold)}
+
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <a class="logo" href="../index.html" aria-label="Mjojo Finance Play home"><img src="../img/wordmark.png" alt="Mjojo"></a>
+  <a class="l keep" href="../index.html#work">All work</a>
+  <a class="l" href="nfla.html">NFLA case study</a>
+  <a class="btn btn-gold" href="../index.html#contact">Work with us</a>
+</nav>
+
+<main>
+<header class="chead">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <p class="eyebrow">Case study · Youth &amp; campus</p>
+    <h1>Training student leaders to <em>represent</em> every student</h1>
+    <p class="lede">Over three days in October 2026 we trained the Student Representative Council (SRC) of Ekurhuleni West TVET College on governance, conflict and their constitution. We then wrote a findings paper for campus management based on the leaders' own self-assessments.</p>
+    <div class="meta">
+      <div><span>Client</span><b>Ekurhuleni West TVET College (EWC)</b></div>
+      <div><span>Delivered with</span><b>Mohoko Trading Enterprise</b></div>
+      <div><span>When</span><b>October 2026 · three days</b></div>
+      <div><span>Who took part</span><b>SRC members from across the college's campuses</b></div>
+      <div><span>Our role</span><b>Facilitation, assessment and the findings paper</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="gallery">
+    <figure class="g1 rv"><img src="../img/ewc-facilitator.jpg" alt="A facilitator presenting the session 'Constitution Review: Writing Down How Things Get Done' to SRC members"><figcaption>Session 4 · Constitution review</figcaption></figure>
+    <figure class="g2 rv"><img src="../img/ewc-speaker.jpg" alt="Facilitator speaking with a microphone beside a flipchart"><figcaption>Facilitation, day 2</figcaption></figure>
+    <figure class="g3 rv"><img src="../img/ewc-group.jpg" alt="Group photo of the SRC members and facilitators"><figcaption>The SRC cohort</figcaption></figure>
+  </div>
+</div>
+
+<section class="figs-row" aria-label="Training in numbers" style="margin-top:48px">
+  <div><b>3</b><span>days of training</span></div>
+  <div><b>6</b><span>sessions</span></div>
+  <div><b>5</b><span>campuses in the self-assessment</span></div>
+  <div><b>10</b><span>questions per leader</span></div>
+  <div><b class="g">1</b><span>findings paper for management</span></div>
+  <div><b class="g">4</b><span>recommendations</span></div>
+</section>
+
+<div class="wrap">
+<section class="blk">
+  <div class="side"><p class="eyebrow">The programme</p><h2 class="h-m">From the SRC's purpose to its <em>paperwork.</em></h2>
+    <p class="muted" style="font-size:15px">Each session mixed short input with group work. Leaders worked on their real constitution and code of conduct, not textbook examples.</p></div>
+  <div class="main">
+    <div class="steps">
+      <div class="step rv"><p class="d"><b>Session 1</b>Foundation</p><div><h3>Introduction and foundation</h3><p>The SRC's role in college governance, human rights and democratic principles, the constitution and elections, and leading with inclusion and accountability.</p></div></div>
+      <div class="step rv"><p class="d"><b>Session 2</b>People</p><div><h3>Conflict management and resolution</h3><p>Handling disagreements inside the council and between students and staff, before they escalate.</p></div></div>
+      <div class="step rv"><p class="d"><b>Session 3</b>Rules</p><div><h3>Code of conduct: finding loopholes</h3><p>Reading the code of conduct closely to find the gaps that cause disputes.</p></div></div>
+      <div class="step rv"><p class="d"><b>Session 4</b>Rules</p><div><h3>Constitution review: writing down how things get done</h3><p>Turning unwritten habits into clear written procedures, and logging gaps in a constitution gap register.</p></div></div>
+      <div class="step rv"><p class="d"><b>Session 5</b>Rules</p><div><h3>Constitution review, part 2: writing a procedure that works</h3><p>Drafting procedures that hold up in practice: who acts, by when and what gets recorded.</p></div></div>
+      <div class="step rv"><p class="d"><b>Session 6</b>Practice</p><div><h3>Democracy and fairness</h3><p>Representing every student fairly, including the quiet ones and those who didn't vote for you.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">From the room</p><h2 class="h-m">Leaders wrote their own escalation routes.</h2></div>
+  <div class="main">
+    <div class="flips">
+      <figure class="rv"><img src="../img/ewc-flip1.jpg" alt="Flipchart from group 4 listing five steps: listen to students and check SRC records, collect evidence and follow up with the responsible department, inspect the problem, remain calm, escalate to Student Affairs"></figure>
+      <figure class="rv"><img src="../img/ewc-flip2.jpg" alt="Flipchart from group 5 about why student voices matter: student dignity, safety and academic success depend on being heard"></figure>
+    </div>
+    <p class="quote rv">“Student dignity, safety and academic success depend on being heard.”</p>
+    <p class="mono muted">Group 5, flipchart notes</p>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">What we found</p><h2 class="h-m">The values are there. <em>The routines aren't yet.</em></h2>
+    <p class="muted" style="font-size:15px">We reviewed ten self-assessments from five campuses, completed on 8–9 October 2026. The figures describe this group as a snapshot, not every student leader at the college.</p></div>
+  <div class="main">
+    <div class="find">
+      <div class="rv"><b>100%</b><div><h3>Understand why the SRC exists</h3><p>Every readable sheet said the SRC gives all students a formal voice in decisions that affect them.</p><div class="meter"><i style="--v:100%"></i></div></div></div>
+      <div class="rv"><b>70%</b><div><h3>Put students' needs first</h3><p>The rest ranked college rules or their own opinion above what students need and say.</p><div class="meter"><i style="--v:70%"></i></div></div></div>
+      <div class="rv"><b>70%</b><div><h3>Couldn't name where to take a problem</h3><p>They wrote “follow the correct procedure” without saying who to approach. Only 30% named real steps, such as a written memo to Student Support Services.</p><div class="meter"><i style="--v:70%"></i></div></div></div>
+      <div class="rv"><b>50%</b><div><h3>Find getting action the hardest part</h3><p>Results often depend on management, and leaders described waiting more than following up.</p><div class="meter"><i style="--v:50%"></i></div></div></div>
+      <div class="rv"><b>70%</b><div><h3>Named students who get overlooked</h3><p>Shy students, those who live off campus, students with disabilities and first-years. But only 10% described a routine that would reach them reliably.</p><div class="meter"><i style="--v:70%"></i></div></div></div>
+      <div class="rv"><b>60%</b><div><h3>Committed to a listening step within two weeks</h3><p>Class visits, listening sessions or anonymous feedback forms. Another 20% planned a service drive, such as NSFAS application help.</p><div class="meter"><i style="--v:60%"></i></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">Our recommendations</p><h2 class="h-m">Practical skills, not a change of attitude.</h2></div>
+  <div class="main">
+    <ol class="recs">
+      <li>Give each campus a simple chart of who to approach first, who next and what to put in writing, and let leaders practise it.</li>
+      <li>Teach follow-up: track every concern, keep minutes and report back to students regularly, even when progress is slow.</li>
+      <li>Pair visible projects, like financial-aid drives, with gathering and documenting student concerns for management.</li>
+      <li>Practise using the constitution to solve real student problems, so leaders see it as a tool rather than a barrier.</li>
+    </ol>
+  </div>
+</section>
+</div>
+
+<section class="wrap endcta">
+  <p class="eyebrow">Training student or staff leaders?</p>
+  <h2 class="h-l">We run the sessions <em>and</em> tell you what we found.</h2>
+  <p class="lede">Leadership, governance and financial literacy training for SRCs, student societies, youth structures and staff, with a written report at the end.</p>
+  <div class="row2"><a class="btn btn-gold" href="../index.html#contact">Request a quote <span class="arr">→</span></a><a class="btn btn-ghost" href="../index.html#work">See all our work</a></div>
+  <a class="nextcase" href="nfla.html"><span class="mono muted">Next case study</span><b>MSME Manufacturing Programme for NFLA →</b></a>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap"><p>© 2026 Mjojo Finance Play · mjojofinanceplay@gmail.com · 064 176 5241</p>
+<p class="small">Findings summarised from Mjojo Finance Play's paper “SRC Self-Assessments: Findings Paper”, Ekurhuleni West TVET College, October 2026.</p></div></footer>
+
+<script>
+(function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');else io.observe(el)});})();
+</script>
+</body>
+</html>

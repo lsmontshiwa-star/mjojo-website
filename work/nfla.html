@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NFLA MSME Programme</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+/* Layout concept: a dark theatre. The page is the stage, photos are lit like
+   performers, and the logo's four colours appear only as stage lights. */
+:root{
+  --ink:#0B0910; --ink-2:#14101C; --ink-3:#1D1828;
+  --line:rgba(240,234,255,.12); --line-2:rgba(240,234,255,.22);
+  --paper:#F3EFFA; --mute:#A59EB8; --dim:#6F6884;
+  --stage:#8E63FF; --gold:#FFD62E; --blue:#3A86E0; --red:#F0393A; --green:#2BBD6B;
+  --f-display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --f-serif:"Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --maxw:1320px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--f-display);font-size:17px;line-height:1.55;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+/* film grain over everything, very faint */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+@media (min-width:900px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+
+/* type */
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.h-xl{font-size:clamp(3.2rem,11vw,10.5rem);line-height:.88;letter-spacing:-.045em;font-weight:700;margin:0;text-wrap:balance}
+.h-l{font-size:clamp(2.3rem,6.2vw,5.6rem);line-height:.95;letter-spacing:-.035em;font-weight:650;margin:0;text-wrap:balance}
+.h-m{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.04;letter-spacing:-.025em;font-weight:600;margin:0;text-wrap:balance}
+.h-s{font-size:1.25rem;line-height:1.2;letter-spacing:-.01em;font-weight:600;margin:0}
+em,.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.h-l em,.h-xl em,.h-m em{color:var(--gold)}
+.lede{font-size:clamp(1.05rem,1.5vw,1.25rem);color:#D6D0E4;max-width:62ch;margin:0}
+.muted{color:var(--mute)}
+.mono{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em}
+.num{font-variant-numeric:tabular-nums}
+p{margin:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font:600 15px/1 var(--f-display);
+  text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+.btn-gold{background:linear-gradient(180deg,#FFE065,#FFC81F);color:#17120A;box-shadow:0 8px 30px -10px rgba(255,214,46,.6)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line-2);color:var(--paper);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--paper)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* nav */
+.nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);z-index:70;
+  display:flex;align-items:center;gap:6px;padding:7px 7px 7px 18px;border-radius:999px;
+  background:rgba(20,16,28,.72);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
+  border:1px solid var(--line);width:max-content;max-width:calc(100% - 24px)}
+.nav .logo img{height:20px;width:auto}
+.nav .logo{display:flex;align-items:center;margin-right:10px}
+.nav a.l{font-size:14px;text-decoration:none;color:var(--mute);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s;white-space:nowrap}
+.nav a.l:hover,.nav a.l.on{color:var(--paper);background:rgba(255,255,255,.06)}
+.nav .btn{padding:10px 16px;font-size:14px}
+@media (max-width:820px){.nav a.l{display:none}.nav a.l.keep{display:inline-block}}
+
+/* reveal: elements are readable at rest, motion only adds polish */
+.js .rv{transform:translateY(26px);opacity:.25;transition:transform 1s var(--ease),opacity 1s var(--ease)}
+.js .rv.in{transform:none;opacity:1}
+
+/* section scaffolding */
+section{position:relative}
+.sec{padding-block:clamp(80px,12vw,160px)}
+.sec-head{display:grid;gap:22px;margin-bottom:clamp(40px,6vw,72px)}
+.rule{height:1px;background:var(--line)}
+
+/* tags */
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;border:1px solid var(--line-2);color:#D6D0E4;white-space:nowrap}
+.tag.gold{border-color:rgba(255,214,46,.5);color:var(--gold)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding-block:56px 40px;color:var(--mute);font-size:14px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.foot h4{font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+.foot a{text-decoration:none;color:var(--paper)}
+.foot a:hover{color:var(--gold)}
+.foot .small{font-size:12.5px;color:var(--dim);margin-top:40px;max-width:80ch}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .rv{transform:none;opacity:1}
+}
+
+/* case-study pages */
+.chead{padding-block:calc(env(safe-area-inset-top,0px) + 130px) 60px;position:relative;overflow:hidden;isolation:isolate}
+.chead::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70vw;height:70vw;z-index:-1;background:radial-gradient(circle,rgba(142,99,255,.22),transparent 60%)}
+.back{display:inline-flex;gap:8px;align-items:center;color:var(--mute);text-decoration:none;font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:36px}
+.back:hover{color:var(--gold)}
+.chead h1{font-size:clamp(2.6rem,7.5vw,6.6rem);line-height:.92;letter-spacing:-.04em;font-weight:680;margin:20px 0 30px;max-width:16ch;text-wrap:balance}
+.chead h1 em{color:var(--gold)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid var(--line);margin-top:48px}
+.meta div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.meta span{font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.meta b{font-weight:550;font-size:15.5px}
+.figs-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-block:1px solid var(--line);background:var(--ink-2)}
+.figs-row div{padding:30px 20px;border-left:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.figs-row div:first-child{border-left:0}
+.figs-row b{font-size:clamp(2rem,3.6vw,3.2rem);line-height:.9;letter-spacing:-.04em;font-weight:650;font-variant-numeric:tabular-nums}
+.figs-row b.g{color:var(--gold)}
+.figs-row span{font-size:13.5px;color:var(--mute)}
+@media (max-width:1000px){.figs-row{grid-template-columns:repeat(3,minmax(0,1fr))}.figs-row div:nth-child(4){border-left:0}.figs-row div:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:560px){.figs-row{grid-template-columns:repeat(2,minmax(0,1fr))}.figs-row div{border-left:0;border-top:1px solid var(--line)}.figs-row div:nth-child(even){border-left:1px solid var(--line)}.figs-row div:nth-child(-n+2){border-top:0}}
+.blk{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(24px,5vw,80px);padding-block:clamp(60px,8vw,110px);border-bottom:1px solid var(--line)}
+@media (max-width:900px){.blk{grid-template-columns:1fr}}
+.blk .side{display:grid;gap:16px;align-content:start}
+@media (min-width:901px){.blk .side{position:sticky;top:100px;align-self:start}}
+.blk .main{display:grid;gap:24px;min-width:0}
+.blk .main p{color:#D6D0E4;max-width:64ch}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:#D6D0E4}
+.ticks li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:9px}
+.steps{display:grid;border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.step .d{font:500 12px/1.4 var(--f-mono);letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.step .d b{display:block;color:var(--gold);font-size:13px;margin-bottom:4px}
+.step h3{font-size:1.2rem;letter-spacing:-.01em;font-weight:600;margin:0 0 6px}
+.step p{font-size:15px;color:var(--mute)!important}
+@media (max-width:560px){.step{grid-template-columns:1fr;gap:6px}}
+.split{display:flex;width:100%;height:58px;border-radius:12px;overflow:hidden;gap:3px}
+.split div{display:flex;align-items:flex-end;padding:8px 10px;font:500 11px/1.2 var(--f-mono);letter-spacing:.04em;color:var(--ink)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:6px}
+.legend div{display:grid;gap:4px;font-size:14px;color:var(--mute)}
+.legend b{color:var(--paper);font-weight:600}
+.bars{display:grid;gap:16px}
+.bar{display:grid;grid-template-columns:120px minmax(0,1fr) 64px;gap:16px;align-items:center}
+.bar .lab{font:500 12px/1.3 var(--f-mono);color:var(--mute);letter-spacing:.04em}
+.bar .tr{height:14px;border-radius:14px;background:var(--ink-3);overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:14px;background:linear-gradient(90deg,#5A4A86,var(--stage));transform-origin:left;transform:scaleX(var(--v));transition:transform 1.4s var(--ease)}
+.js .bar .tr i{transform:scaleX(0)}
+.js .bar.in .tr i{transform:scaleX(var(--v))}
+.bar.top .tr i{background:linear-gradient(90deg,#C9A21C,var(--gold))}
+.bar .v{font-weight:650;font-size:1.25rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right}
+.bar .sub{grid-column:2/4;font-size:13px;color:var(--dim);margin-top:-10px}
+@media (max-width:560px){.bar{grid-template-columns:1fr 54px}.bar .lab{grid-column:1/-1}.bar .sub{grid-column:1/-1}}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tool{padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--ink-2);display:grid;gap:8px;align-content:start}
+.tool h4{margin:0;font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tool ul{margin:0;padding-left:16px;display:grid;gap:3px;font-size:14px;color:#D6D0E4}
+.recs{counter-reset:r;display:grid;gap:0;border-top:1px solid var(--line)}
+.recs li{list-style:none;counter-increment:r;display:grid;grid-template-columns:54px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);color:#D6D0E4}
+.recs li::before{content:counter(r,decimal-leading-zero);font:500 13px/1.6 var(--f-mono);color:var(--gold)}
+.recs{padding:0;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;padding-block:12px}
+.gallery figure{margin:0;border-radius:16px;overflow:hidden;position:relative;background:var(--ink-3)}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.g1{grid-column:span 7;aspect-ratio:4/3}.g2{grid-column:span 5;aspect-ratio:3/4;grid-row:span 2}.g3{grid-column:span 7;aspect-ratio:16/8}
+@media (max-width:760px){.g1,.g3{grid-column:span 12}.g2{grid-column:span 12;grid-row:auto;aspect-ratio:4/5}}
+.find{display:grid;gap:0;border-top:1px solid var(--line)}
+.find>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.find b{font-size:2.4rem;line-height:.9;letter-spacing:-.04em;font-weight:650;font-variant-numeric:tabular-nums}
+.find h3{font-size:1.15rem;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.find p{font-size:15px;color:var(--mute)!important}
+.find .meter{height:4px;border-radius:4px;background:var(--ink-3);margin-top:12px;overflow:hidden;max-width:420px}
+.find .meter i{display:block;height:100%;background:var(--gold);width:var(--v)}
+.flips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.flips figure{margin:0;border-radius:14px;overflow:hidden;background:#eee;transform:rotate(-1.2deg)}
+.flips figure:nth-child(2){transform:rotate(1.4deg)}
+.flips img{width:100%;height:auto}
+.quote{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.2;color:var(--paper);border-left:2px solid var(--gold);padding-left:22px;max-width:30ch}
+.endcta{padding-block:clamp(70px,10vw,140px);text-align:left;display:grid;gap:24px}
+.endcta .row2{display:flex;flex-wrap:wrap;gap:12px}
+.nextcase{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:26px 0;border-top:1px solid var(--line);text-decoration:none}
+.nextcase b{font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;font-weight:600;transition:color .3s}
+.nextcase:hover b{color:var(--gold)}
+
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <a class="logo" href="../index.html" aria-label="Mjojo Finance Play home"><img src="../img/wordmark.png" alt="Mjojo"></a>
+  <a class="l keep" href="../index.html#work">All work</a>
+  <a class="l" href="ewc.html">EWC case study</a>
+  <a class="btn btn-gold" href="../index.html#contact">Work with us</a>
+</nav>
+
+<main>
+<header class="chead">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <p class="eyebrow">Case study · Business &amp; adults</p>
+    <h1>Teaching 40 manufacturers to run <em>compliant</em> businesses</h1>
+    <p class="lede">Over four months we wrote, taught and assessed an eight-module programme for manufacturing micro, small and medium enterprises (MSMEs) in Gauteng, for the National Financial Literacy Advocacy, funded by the Gauteng Department of Economic Development.</p>
+    <div class="meta">
+      <div><span>Programme</span><b>GDED MSME Capacity Building Programme, Manufacturing Track</b></div>
+      <div><span>Client</span><b>National Financial Literacy Advocacy (NFLA)</b></div>
+      <div><span>Funder</span><b>Gauteng Department of Economic Development (GDED)</b></div>
+      <div><span>Period</span><b>11 March – 2 June 2026</b></div>
+      <div><span>Format</span><b>Eight live two-hour virtual workshops</b></div>
+    </div>
+  </div>
+</header>
+
+<section class="figs-row" aria-label="Programme in numbers">
+  <div><b>40</b><span>manufacturing MSMEs in the cohort</span></div>
+  <div><b>8</b><span>modules delivered</span></div>
+  <div><b>25–32</b><span>business owners per session</span></div>
+  <div><b>15+</b><span>templates, checklists and policies</span></div>
+  <div><b class="g">83%</b><span>average on the final assessment</span></div>
+  <div><b class="g">90%</b><span>median on the final assessment</span></div>
+</section>
+
+<div class="wrap">
+<section class="blk">
+  <div class="side"><p class="eyebrow">The brief</p><h2 class="h-m">Good products, missing paperwork.</h2></div>
+  <div class="main">
+    <p>Many manufacturing businesses in Gauteng make good products but run informally. Without company registration, tax clearance, contracts or a Central Supplier Database (CSD) listing, they can't reach tenders, corporate supply chains or development finance. Many also price below their real cost of production without realising it.</p>
+    <p>NFLA needed a training partner to close those gaps for a cohort of 40 businesses, and to produce a full portfolio of evidence showing what participants learned.</p>
+    <p class="mono muted" style="margin-top:6px">What Mjojo was responsible for</p>
+    <ul class="ticks">
+      <li>Training materials for all eight modules, written for the manufacturing context</li>
+      <li>Assessment instruments, including a new interactive online format</li>
+      <li>Facilitating every workshop</li>
+      <li>Templates, checklists, policies and contracts participants could use straight away</li>
+      <li>Digital attendance registers and assessment systems</li>
+      <li>Monthly progress reports and the portfolio of evidence</li>
+    </ul>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">The curriculum</p><h2 class="h-m">Eight modules, each building on the last.</h2>
+    <p class="muted" style="font-size:15px">Every module also included a short mental coaching segment on the fear, overwhelm and self-doubt that keep owners away from formal systems.</p></div>
+  <div class="main">
+    <div class="steps">
+      <div class="step rv"><p class="d"><b>Module 1</b>11 Mar</p><div><h3>Business registration &amp; legal structures</h3><p>Choosing the right structure, CIPC registration, annual returns, directors' duties and moving from informal to formal.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 2</b>18 Mar</p><div><h3>Tax compliance for manufacturers</h3><p>Income tax, VAT on manufacturing inputs and outputs, PAYE, UIF, SDL and staying in good standing with SARS.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 3</b>24 Mar</p><div><h3>Financial management &amp; costing</h3><p>Direct, indirect, fixed and variable costs, pricing for profit, bookkeeping and cash-flow forecasting.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 4</b>10 Apr</p><div><h3>Labour law, HR &amp; workplace compliance</h3><p>Employment contracts, BCEA and minimum wage, UIF, COIDA and health and safety on the factory floor.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 5</b>21 Apr</p><div><h3>Contracts &amp; legal risk</h3><p>Key clauses, negotiation basics and red flags to catch before signing. First module with online assessment.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 7</b>15 May</p><div><h3>Intellectual property &amp; product protection</h3><p>Trademarks, patents, designs, trade secrets, NDAs and the Counterfeit Goods Act.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 8</b>22 May</p><div><h3>Funding, tenders &amp; supplier development</h3><p>SEFA, IDC, NEF and dtic incentives, the eTender portal, PPPFA scoring, B-BBEE and CSD registration.</p></div></div>
+      <div class="step rv"><p class="d"><b>Module 9</b>2 Jun</p><div><h3>Consolidation, close-out &amp; final assessment</h3><p>Review of all modules, participant reflection and the comprehensive final assessment.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">How each session ran</p><h2 class="h-m">We asked for two hours, <em>not one.</em></h2></div>
+  <div class="main">
+    <p>The original plan allowed one hour per module. In a review before Module 1 we showed the content couldn't be taught properly in that time, and NFLA agreed to double it. The extra hour made room for participants to fill in templates for their own businesses during the session.</p>
+    <div class="split" role="img" aria-label="A two-hour session: about 35 minutes of concepts, 45 minutes of practice, 25 minutes of discussion and 15 minutes of assessment">
+      <div style="flex:35;background:#3A86E0">Concepts</div><div style="flex:45;background:#FFD62E">Practice</div><div style="flex:25;background:#2BBD6B">Q&amp;A</div><div style="flex:15;background:#F0393A;color:#fff">Test</div>
+    </div>
+    <div class="legend">
+      <div><b>Concepts · 30–40 min</b>The rules and why they matter, taught interactively</div>
+      <div><b>Practice · 40–50 min</b>Templates and worked examples on their own business</div>
+      <div><b>Discussion · 20–30 min</b>Questions about each owner's situation</div>
+      <div><b>Assessment · 10–20 min</b>Online assessment from Module 5</div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">Results</p><h2 class="h-m">Scores rose module after module.</h2>
+    <p class="muted" style="font-size:15px">From Module 5 we replaced paper tests with interactive online assessments: multiple choice, matching, sequencing, classification, written answers and case studies.</p></div>
+  <div class="main">
+    <div class="bars">
+      <div class="bar rv" style="--v:.705"><span class="lab">Module 7 · IP</span><div class="tr"><i></i></div><span class="v">71%</span><span class="sub">18 of 25 attendees assessed · median 67%</span></div>
+      <div class="bar rv" style="--v:.818"><span class="lab">Module 8 · Funding</span><div class="tr"><i></i></div><span class="v">82%</span><span class="sub">14 of 32 attendees assessed · median 84%</span></div>
+      <div class="bar top rv" style="--v:.831"><span class="lab">Final assessment</span><div class="tr"><i></i></div><span class="v" style="color:var(--gold)">83%</span><span class="sub">18 of 30 attendees assessed · median 90% · top score 48/48</span></div>
+    </div>
+    <p>The strongest results came on the final assessment, the longest and most comprehensive one, which points to knowledge that stuck rather than short-term recall.</p>
+    <p class="mono muted">What participants started doing</p>
+    <ul class="ticks">
+      <li>Starting CIPC registration during or straight after Module 1</li>
+      <li>Contacting SARS to check their status and request tax clearance</li>
+      <li>Re-pricing products after the costing exercise showed they were selling below cost</li>
+      <li>Drafting employment contracts from the Module 4 templates</li>
+      <li>Starting CSD registration and identifying specific tenders to bid on</li>
+    </ul>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">What we built</p><h2 class="h-m">Tools they kept after the programme ended.</h2></div>
+  <div class="main">
+    <div class="toolgrid">
+      <div class="tool"><h4>Checklists &amp; plans</h4><ul><li>CIPC compliance checklist</li><li>Tax compliance action plan</li><li>HR compliance checklist</li><li>Contract review checklist</li><li>Supplier onboarding checklist</li><li>Funding readiness checklist</li><li>Tender compliance checklist</li><li>B-BBEE self-assessment</li></ul></div>
+      <div class="tool"><h4>Contracts &amp; policies</h4><ul><li>Permanent, part-time and fixed-term employment contracts</li><li>Health &amp; safety policy</li><li>Workplace disciplinary code</li><li>Supplier and client contract templates</li><li>NDA template</li></ul></div>
+      <div class="tool"><h4>Guides &amp; calculators</h4><ul><li>Manufacturing costing template</li><li>Cash-flow management framework</li><li>CSD registration step-by-step guide</li><li>IP decision guide and audit template</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="side"><p class="eyebrow">Our recommendations</p><h2 class="h-m">What the next cohort should get.</h2></div>
+  <div class="main">
+    <ol class="recs">
+      <li>Build digital literacy support in from day one. Many owners struggled with Zoom and government portals.</li>
+      <li>Link assessment completion to certification, with protected time in every session.</li>
+      <li>Add post-programme mentoring, such as a 90-day compliance check-in.</li>
+      <li>Keep the two-hour format and the multi-method online assessments as standard.</li>
+      <li>Keep teaching through templates people complete for their own business.</li>
+    </ol>
+  </div>
+</section>
+</div>
+
+<section class="wrap endcta">
+  <p class="eyebrow">Need a programme like this?</p>
+  <h2 class="h-l">We design, teach, assess <em>and report.</em></h2>
+  <p class="lede">For SMEs, staff, members or beneficiaries. Tell us who you need to reach and we'll send a proposal.</p>
+  <div class="row2"><a class="btn btn-gold" href="../index.html#contact">Request a quote <span class="arr">→</span></a><a class="btn btn-ghost" href="../index.html#work">See all our work</a></div>
+  <a class="nextcase" href="ewc.html"><span class="mono muted">Next case study</span><b>SRC leadership capacitation, Ekurhuleni West TVET College →</b></a>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap"><p>© 2026 Mjojo Finance Play · mjojofinanceplay@gmail.com · 064 176 5241</p>
+<p class="small">Figures on this page come from Mjojo Finance Play's programme completion report submitted to NFLA and GDED on 24 June 2026.</p></div></footer>
+
+<script>
+(function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');else io.observe(el)});})();
+</script>
+</body>
+</html>
